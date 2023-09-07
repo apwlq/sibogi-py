@@ -1,6 +1,9 @@
 import time
-from playsound import playsound
+import pygame
 import os
+
+# pygame 초기화
+pygame.mixer.init()
 
 # txt 파일 경로
 txt_file_path = "시보기.txt"
@@ -50,7 +53,8 @@ while True:
 
                 # 현재 날짜와 알람 시간이 일치하고 이미 울린 알람이 아니면 음악 재생
                 if alarm_time_str == current_time_str and alarm_time_str not in triggered_alarms:
-                    playsound(music_file_path)
+                    pygame.mixer.music.load(music_file_path)
+                    pygame.mixer.music.play()
                     triggered_alarms.add(alarm_time_str)
 
         time.sleep(1)  # 1초마다 체크
