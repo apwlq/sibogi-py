@@ -10,6 +10,11 @@ last_check_time = 0
 
 while True:
     try:
+        # txt 파일이 없으면 새로 생성
+        if not os.path.exists(txt_file_path):
+            with open(txt_file_path, "w") as new_file:
+                new_file.write("")
+
         # txt 파일을 열어 수정 시간을 확인
         file_mod_time = os.path.getmtime(txt_file_path)
         
